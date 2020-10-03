@@ -24,6 +24,7 @@ task(
   ];
   if (!typechainTargets.includes(typechain.target as string)) {
     throw new BuidlerPluginError(
+      "Typechain",
       "Invalid Typechain target, please provide via buidler.config.js (typechain.target)"
     );
   }
