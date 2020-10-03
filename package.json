@@ -49,6 +49,7 @@
     "tslint-plugin-prettier": "^2.3.0",
     "typechain": "^2.0.0",
     "@typechain/ethers-v4": "^1.0.0",
+    "@typechain/ethers-v5": "^0.0.3",
     "@typechain/truffle-v4": "^2.0.2",
     "@typechain/truffle-v5": "^2.0.2",
     "@typechain/web3-v1": "^1.0.0",
@@ -59,6 +60,7 @@
     "ts-generator": "0.0.8",
     "typechain": "^2.0.0",
     "@typechain/ethers-v4": "^1.0.0",
+    "@typechain/ethers-v5": "^0.0.3",
     "@typechain/truffle-v4": "^2.0.2",
     "@typechain/truffle-v5": "^2.0.2",
     "@typechain/web3-v1": "^1.0.0"
