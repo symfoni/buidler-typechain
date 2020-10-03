@@ -2,6 +2,8 @@
 
 # buidler-typechain
 
+_Now supports Ethers v5 and Truffle v5!_
+
 _Updated for TypeChain v2!_
 
 Add [Typechain](https://www.github.com/ethereum-ts/TypeChain) tasks to your Buidler project!
@@ -40,7 +42,7 @@ This is an example of how to set it:
 module.exports = {
   typechain: {
     outDir: "src/types",
-    target: "ethers-v4",
+    target: "ethers-v5",
   },
 };
 ```
