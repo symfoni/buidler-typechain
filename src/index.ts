@@ -1,11 +1,34 @@
 import fsExtra from "fs-extra";
 import { TASK_CLEAN, TASK_COMPILE } from "hardhat/builtin-tasks/task-names";
-import { task } from "hardhat/config";
+import { extendConfig, task } from "hardhat/config";
 import { HardhatPluginError } from "hardhat/plugins";
 import { tsGenerator } from "ts-generator";
 import { TypeChain } from "typechain/dist/TypeChain";
-import "./type-extensions";
 import { getDefaultTypechainConfig } from "./config";
+import { HardhatConfig, HardhatUserConfig } from "hardhat/types";
+import "./type-extensions";
+
+extendConfig(
+  (config: HardhatConfig, userConfig: Readonly<HardhatUserConfig>) => {
+    const userReactPath = userConfig.paths;
+    // let newReactPath: string;
+    // if (userReactPath === undefined) {
+    //   newReactPath = path.join(config.paths.root, "./frontend/src/hardhat");
+    // } else {
+    //   if (path.isAbsolute(userReactPath)) {
+    //     newReactPath = userReactPath;
+    //   } else {
+    //     // We resolve relative paths starting from the project's root.
+    //     // Please keep this convention to avoid confusion.
+    //     newReactPath = path.normalize(
+    //       path.join(config.paths.root, userReactPath)
+    //     );
+    //   }
+    // }
+
+    // config.paths.react = newReactPath;
+  }
+);
 
 task(
   "typechain",
