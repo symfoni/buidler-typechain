@@ -7,26 +7,37 @@ import { TypeChain } from "typechain/dist/TypeChain";
 import { getDefaultTypechainConfig } from "./config";
 import { HardhatConfig, HardhatUserConfig } from "hardhat/types";
 import "./type-extensions";
+import path from "path";
 
 extendConfig(
   (config: HardhatConfig, userConfig: Readonly<HardhatUserConfig>) => {
-    const userReactPath = userConfig.paths;
-    // let newReactPath: string;
-    // if (userReactPath === undefined) {
-    //   newReactPath = path.join(config.paths.root, "./frontend/src/hardhat");
-    // } else {
-    //   if (path.isAbsolute(userReactPath)) {
-    //     newReactPath = userReactPath;
-    //   } else {
-    //     // We resolve relative paths starting from the project's root.
-    //     // Please keep this convention to avoid confusion.
-    //     newReactPath = path.normalize(
-    //       path.join(config.paths.root, userReactPath)
-    //     );
-    //   }
-    // }
-
-    // config.paths.react = newReactPath;
+    if (!userConfig.typechain) {
+      // defaults
+      config.typechain = {
+        outDir: path.join(config.paths.root, "./typechain"),
+        target: "ethers-v5",
+      };
+    } else {
+      const userTypechainOutdir = userConfig.typechain.outDir; // Not working
+      let newTypechainPath: string;
+      if (!userTypechainOutdir) {
+        newTypechainPath = path.join(config.paths.root, "./typechain");
+      } else {
+        if (path.isAbsolute(userTypechainOutdir)) {
+          newTypechainPath = userTypechainOutdir;
+        } else {
+          // We resolve relative paths starting from the project's root.
+          // Please keep this convention to avoid confusion.
+          newTypechainPath = path.normalize(
+            path.join(config.paths.root, userTypechainOutdir)
+          );
+        }
+      }
+      config.typechain.outDir = newTypechainPath;
+      if (!userConfig.typechain.target) {
+        config.typechain.target = "ethers-v5";
+      }
+    }
   }
 );
 

@@ -1,3 +1,5 @@
+import "hardhat/types/runtime";
+import "hardhat/types/config";
 import { TypechainConfig } from "./types";
 
 declare module "hardhat/types/config" {
