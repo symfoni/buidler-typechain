@@ -4,7 +4,7 @@ import { task } from "hardhat/config";
 import { HardhatPluginError } from "hardhat/plugins";
 import { tsGenerator } from "ts-generator";
 import { TypeChain } from "typechain/dist/TypeChain";
-
+import "./type-extensions";
 import { getDefaultTypechainConfig } from "./config";
 
 task(
