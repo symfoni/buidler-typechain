@@ -1,9 +1,9 @@
-import { ResolvedBuidlerConfig } from "@nomiclabs/buidler/types";
+import { HardhatConfig } from "hardhat/types";
 
 import { TypechainConfig } from "./types";
 
 export function getDefaultTypechainConfig(
-  config: ResolvedBuidlerConfig
+  config: HardhatConfig
 ): TypechainConfig {
   const defaultConfig: TypechainConfig = {
     outDir: "typechain",

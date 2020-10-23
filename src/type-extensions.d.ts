@@ -1,7 +1,7 @@
 import { TypechainConfig } from "./types";
 
-declare module "@nomiclabs/buidler/types" {
-  interface BuidlerConfig {
+declare module "hardhat/types" {
+  interface HardhatConfig {
     typechain?: TypechainConfig;
   }
 }

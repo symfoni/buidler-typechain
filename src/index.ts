@@ -1,10 +1,7 @@
-import {
-  TASK_CLEAN,
-  TASK_COMPILE,
-} from "@nomiclabs/buidler/builtin-tasks/task-names";
-import { task } from "@nomiclabs/buidler/config";
-import { BuidlerPluginError } from "@nomiclabs/buidler/plugins";
 import fsExtra from "fs-extra";
+import { TASK_CLEAN, TASK_COMPILE } from "hardhat/builtin-tasks/task-names";
+import { task } from "hardhat/config";
+import { HardhatPluginError } from "hardhat/plugins";
 import { tsGenerator } from "ts-generator";
 import { TypeChain } from "typechain/dist/TypeChain";
 
@@ -15,17 +12,11 @@ task(
   "Generate Typechain typings for compiled contracts"
 ).setAction(async ({}, { config, run }) => {
   const typechain = getDefaultTypechainConfig(config);
-  const typechainTargets = [
-    "ethers-v4",
-    "ethers-v5",
-    "truffle",
-    "web3-v1",
-    "truffle-v5",
-  ];
+  const typechainTargets = ["ethers-v5", "web3-v1", "truffle-v5"];
   if (!typechainTargets.includes(typechain.target as string)) {
-    throw new BuidlerPluginError(
+    throw new HardhatPluginError(
       "Typechain",
-      "Invalid Typechain target, please provide via buidler.config.js (typechain.target)"
+      "Invalid Typechain target, please provide via hardhat.config.js (typechain.target)"
     );
   }
 

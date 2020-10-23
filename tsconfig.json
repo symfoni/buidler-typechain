@@ -11,10 +11,7 @@
     "esModuleInterop": true,
     "preserveSymlinks": true
   },
-  // "files": [], // Any Buidler plugin's main .d.ts has to be added here
-  "exclude": ["dist", "node_modules", "test/buidler-project/testdir"],
-  "include": [
-    "./test",
-    "./src"    
-  ],
+  // "files": [], // Any Hardhat plugin's main .d.ts has to be added here
+  "exclude": ["dist", "node_modules", "test/hardhat-project/testdir"],
+  "include": ["./test", "./src"]
 }
